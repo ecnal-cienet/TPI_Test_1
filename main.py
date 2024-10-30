@@ -9,17 +9,31 @@ data = {
     'History': [70, 75, 80, 85, 77]
 }
 
-# Calculate average, max, and min scores for each subject
-summary = {}
-for subject, scores in data.items():
-    average_score = np.mean(scores)
-    max_score = np.max(scores)
-    min_score = np.min(scores)
-    summary[subject] = {
-        'average': average_score,
-        'max': max_score,
-        'min': min_score
-    }
+def calculate_summary(data):
+    """
+    Calculates the average, max, and min scores for each subject.
+
+    Args:
+        data (dict): A dictionary where keys are subject names and values are lists of scores.
+
+    Returns:
+        dict: A dictionary where keys are subject names and values are dictionaries containing 
+              the average, max, and min scores.
+    """
+    summary = {}
+    for subject, scores in data.items():
+        average_score = np.mean(scores)
+        max_score = np.max(scores)
+        min_score = np.min(scores)
+        summary[subject] = {
+            'average': average_score,
+            'max': max_score,
+            'min': min_score
+        }
+    return summary
+
+# Calculate summary using the function
+summary = calculate_summary(data)
 
 # Print summary
 print("Summary of Scores:")
